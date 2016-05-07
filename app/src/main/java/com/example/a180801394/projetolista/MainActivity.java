@@ -5,7 +5,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -13,6 +15,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
     ArrayList<String> listaPaises;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         ListView listView = (ListView) findViewById(R.id.listView);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(this);
+
     }
 
 
@@ -42,4 +46,14 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     public void onItemClick(AdapterView<?> adapterView, View view, int pos, long l) {
         Toast.makeText(this, listaPaises.get(pos), Toast.LENGTH_LONG).show();
     }
+
+    public void addPais(View v){
+        EditText textoPais = (EditText) findViewById(R.id.editText);
+        listaPaises.add(textoPais.getText().toString());
+//        listView.setAdapter(adapter);
+        textoPais.setText("");
+
+    }
+
+
 }
